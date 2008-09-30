@@ -14,3 +14,7 @@
  # recaptcha:getResult(Закрытый ключ,Адрес c скоторого пришел запрос(IP),Recaptchachallenge(Код теста),Recaptcharesponse(ответ пользователя)) - возвращает:
  * {ok} - если удачно, 
  * {error,"Описание ошибки"} - если тест не пройден.
+
+===Примечание: ===
+
+Для работы требуется mochiweb_util из проекта [http://code.google.com/p/mochiweb/ Mochiweb] и перед использованием нужно запустить inets (iners:start()).
