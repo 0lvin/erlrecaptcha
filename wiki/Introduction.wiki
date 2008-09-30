@@ -17,4 +17,4 @@
 
 ===Примечание: ===
 
-Для работы требуется mochiweb_util из проекта [http://code.google.com/p/mochiweb/ Mochiweb] и перед использованием нужно запустить inets (iners:start()).
+Для работы требуется mochiweb_util из проекта [http://code.google.com/p/mochiweb/ Mochiweb] и перед использованием нужно запустить inets (inets:start()).
