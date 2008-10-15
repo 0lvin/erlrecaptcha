@@ -1,3 +1,13 @@
+===Introduction on English===
+Full web-api for recaptcha you can found in [http://recaptcha.net/apidocs/captcha/ API].
+For using needed mochiweb_util  from http://code.google.com/p/mochiweb/. Before using please start inets(inets:start()).
+
+Example using:
+ # recaptcha:genCaptcha(Public key from recaptcha.net) - returned part html code. This part you must to  your html-form.
+ # recaptcha:getResult(Private key from recaptcha.net, client ip,Recaptchachallenge(key returned from form in recaptcha_challenge_field),Recaptcharesponse(key returned from form in recaptcha_response_field)) - returned:
+ * {ok} - all right, 
+ * {error,"Error message"} - test failed.
+
 ===Общее описание===
 Система [http://recaptcha.net/apidocs/captcha/ Recaptcha] предназначена для выполнения теста Turing относительно пользователей системы. Проверка проводиться через просьбу пользователя ввести 2 слова отображённых на картинке или при желании произнесённых в медиа файле. Из этих 2 слов одно является уже распознанным ранее словом и одно которое не удалось распознать системе OCR. Пользователи вводя эти слова позволяют хоть медленно преобразовывать не распознанные слова для ранее напечатанных книг. Как результат одно слово реально проверяется (100% известно что это за слово) относительно второго существует только статистическая информация как пользователи его распознают - затем эти данные используются для распознания книг.
 
@@ -16,6 +26,3 @@
 ===Примечание: ===
 
 Для работы требуется mochiweb_util из проекта [http://code.google.com/p/mochiweb/ Mochiweb] и перед использованием нужно запустить inets (inets:start()).
-
-Full web-api for recaptcha you can found in [http://recaptcha.net/apidocs/captcha/ API].
-For using needed mochiweb_util  from http://code.google.com/p/mochiweb/. Before using please start inets(inets:start()).
