@@ -8,6 +8,33 @@ Example using:
  * {ok} - all right, 
  * {error,"Error message"} - test failed.
 
+===Some help===
+For receive client ip you can use this code:
+* Yaws
+getIp(A) ->
+    Peer = if
+               tuple(A#arg.clisock),
+               element(1, A#arg.clisock) == sslsocket ->
+                   ssl:peername(A#arg.clisock);
+               true ->
+                   inet:peername(A#arg.clisock)
+           end,
+    {ok,{IP,_}} = Peer,
+    {IP1,IP2,IP3,IP4} = IP,
+    integer_to_list(IP1) ++ "." ++
+    integer_to_list(IP2) ++ "." ++
+    integer_to_list(IP3) ++ "." ++
+    integer_to_list(IP4).
+
+IP received from client socket by A#arg.clisock, where A is #arg record received from yaws. Some exapmle for use yaws you can found [http://yaws.hyber.org/simple.yaws on this link].
+
+* Mochiweb (Thanks for the solution [http://kenpratt.net Ken Pratt])
+
+getIp(Req) ->
+ Req:get(peer).
+
+Example for use [http://code.google.com/p/mochiweb/ mochiweb] you can found [http://www.rsaccon.com/2007/09/mochiweb-erlang-based-webserver-toolkit.html on this page].
+
 ===Общее описание===
 Система [http://recaptcha.net/apidocs/captcha/ Recaptcha] предназначена для выполнения теста Turing относительно пользователей системы. Проверка проводиться через просьбу пользователя ввести 2 слова отображённых на картинке или при желании произнесённых в медиа файле. Из этих 2 слов одно является уже распознанным ранее словом и одно которое не удалось распознать системе OCR. Пользователи вводя эти слова позволяют хоть медленно преобразовывать не распознанные слова для ранее напечатанных книг. Как результат одно слово реально проверяется (100% известно что это за слово) относительно второго существует только статистическая информация как пользователи его распознают - затем эти данные используются для распознания книг.
 
