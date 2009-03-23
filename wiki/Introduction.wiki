@@ -10,7 +10,9 @@ Example using:
 
 ===Some help===
 For receive client ip you can use this code:
+
 * Yaws
+
 getIp(A) ->
     Peer = if
                tuple(A#arg.clisock),
